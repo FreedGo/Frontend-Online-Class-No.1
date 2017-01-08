@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证</title>
+    <style>
+        /*reset*/
+        /* 清除内外边距 */
+        body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+        dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+        pre, /* text formatting elements 文本格式元素 */
+        fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
+        th, td { /* table elements 表格元素 */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 设置默认字体 */
+        body,
+        button, input, select, textarea { /* for ie */
+            /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+            font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+        }
+
+        h1 { font-size: 18px; /* 18px / 12px = 1.5 */ }
+        h2 { font-size: 16px; }
+        h3 { font-size: 14px; }
+        h4, h5, h6 { font-size: 100%; }
+
+        address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+        code, kbd, pre, samp, tt { font-family: "Courier New", Courier, monospace; } /* 统一等宽字体 */
+        small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+
+        /* 重置列表元素 */
+        ul, ol { list-style: none; }
+
+        /* 重置文本格式元素 */
+        a { text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        abbr[title], acronym[title] { /* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */
+            border-bottom: 1px dotted;
+            cursor: help;
+        }
+
+        q:before, q:after { content: ''; }
+
+        /* 重置表单元素 */
+        legend { color: #000; } /* for ie6 */
+        fieldset, img { border: none; } /* img 搭车：让链接里的 img 无边框 */
+        /* 注：optgroup 无法扶正 */
+        button, input, select, textarea {
+            font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
+        }
+
+        /* 重置表格元素 */
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        .clearfix:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+        .clearfix{*+height:1%;}
+        .f-l-l{
+            float: left;
+        }
+        /*/reset*/
+        .container{
+            width:400px;
+            margin:200px auto;
+            background-color: #fff;
+            border:#ccc solid 1px;
+            border-radius: 3px;
+            padding:40px 20px;
+            font-size: 14px;
+            font-family: 'Micorsoft Yahei';
+        }
+        .form-list{
+            height: 40px;
+            margin-bottom: 30px;
+            line-height:40px;
+            position: relative;
+        }
+        .form-left{
+            width:15%;
+            text-align: right;
+            margin-right: 5px;
+        }
+        .tips{
+            position: absolute;
+            bottom: -30px;
+            height:30px;
+            line-height:30px;
+            color: red;
+            display: inline-block;
+            left:60px;
+        }
+        .form-right{
+            width:80%;
+            line-height:40px;
+            height:40px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-radius: 4px;
+            padding-left: 5px;
+            border:#ccc solid 1px;
+        }
+        .form-sub-btn{
+            width:100%;
+            height:40px;
+            background-color: #0f88eb;
+            color: #fff;
+            border:none
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var testNum = 0,
+                name = document.getElementById('nameArea'),//用户名框
+                password = document.getElementById('passwordArea'),//密码框
+                subBtn = document.getElementById('formSubmit'),//提交按钮
+                tips1 = document.getElementById('tips1'),//提醒框1
+                tips2 = document.getElementById('tips2'),//提醒框2
+                loginForm = document.getElementById('login');//form表单
+                loginForm.onsubmit = function(){
+                    if (name.value === 'admin'){
+                        tips1.innerHTML = '';
+                        if (password.value === '888'){
+                            tips2.innerHTML = '';
+                            alert('登录成功!');
+                            name.disabled = true;
+                            password.disabled = true;
+                            subBtn.disabled = true;
+                        }else if(testNum < 2){
+                            //密码输入错误,次数加1
+                            testNum++;
+                            tips2.innerHTML = '密码错误,您还可以再尝试'+(3-testNum)+'次';
+                        }else {
+                            //总次数超过3次,禁止输入
+                            tips2.innerHTML = '';
+                            name.disabled = true;
+                            password.disabled = true;
+                            subBtn.disabled = true;
+                            alert('对不起,您输入错误次数过多,请联系客服88888888解决')
+                        }
+                    }else if(testNum < 2){
+                        testNum++;
+                        tips1.innerHTML = '用户名错误,您还可以再尝试'+(3-testNum)+'次';
+                    }else{
+                        tips1.innerHTML = '';
+                        name.disabled = true;
+                        password.disabled = true;
+                        subBtn.disabled = true;
+                        alert('对不起,您输入错误次数过多,请联系客服88888888解决')
+                    }
+                    return false;
+                }
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="login-form">
+        <form id="login" action="">
+            <ul class="form-group-lists">
+                <li class="form-list clearfix">
+                    <label class="form-left f-l-l" for="nameArea">用户名:</label>
+                    <input type="text" id="nameArea" class="f-l-l form-right" placeholder="请输入用户名" required>
+                    <span class="tips" id="tips1"></span>
+                </li>
+                <li class="form-list clearfix">
+                    <label class="form-left f-l-l" for="passwordArea">密码:</label>
+                    <input type="password" id="passwordArea" class="f-l-l form-right" placeholder="请输入密码" required>
+                    <span class="tips" id="tips2"></span>
+                </li>
+                <li class="form-list clearfix">
+                    <input type="submit" id="formSubmit" class="form-sub-btn" value="登录">
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+</body>
+</html>
