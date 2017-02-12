@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .current {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<script>
+    var btns = document.getElementsByTagName('input');
+    for (var i = 0;i<btns.length;i++){
+        var btn = btns[i];
+        btn.onclick = function(){
+            for(var j = 0 ; j <btns.length ; j++){
+                btns[j].className = '';
+            }
+            this.className = 'current';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var arr = [1,5,52,68,65,98,99,54],
+            temp;
+        for(var i = 0 ; i < arr.length - 1 ; i ++ ){
+            for(j = 0 ; j < arr.length - 1 - i ; j++ ) {
+                temp = arr[j];
+                if (temp > arr[j + 1]){
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        };
+        var hero = new Object();
+            hero.name = 'DeathKnight';
+            hero.level = 10;
+            hero.move = function () {
+                console.log('向前移动')
+            };
+            hero.attack = function (name) {
+                console.log(this.name + '在攻击'+ name);
+            };
+            console.log(true&&'abc');
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
