@@ -7,16 +7,11 @@
 <body>
 <div id="watch"></div>
 <script>
-//    for(var i=1; i<=3; i++){   setTimeout(function(){     console.log(i);   },0); }
-var foo = 1;
-function fn() {
-    foo = 10;
-    return;
-    function foo() {
-    }
-}
-fn();
-console.log(foo)
+	function Fn(){
+		return Fn
+	};
+	fn =new Fn()
+	console.log(fn instanceof Fn);
 </script>
 </body>
 </html>
