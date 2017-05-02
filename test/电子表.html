@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+<div id="watch"></div>
+<script>
+	// 求累加
+
+    function addSum(n) {
+        var sum;
+        if (n === 1){
+            return 1
+        }
+        sum = n + addSum(n-1);
+        return sum;
+    }
+    console.log(addSum(10));
+    
+    //求阶乘
+    function multiply(m) {
+        var result;
+        if (m ===1){
+            return 1
+        }
+        result = m*multiply(m - 1);
+        return result;
+    }
+    console.log(multiply(4));
+
+    //斐波那契数列
+    function getFib(n) {
+        var result;
+        if (n===1 || n===2){
+            return 1;
+        }
+        result = getFib(n-1) + getFib(n-2);
+        return result;
+    }
+    console.log(getFib(12));
+</script>
+</body>
+</html>
