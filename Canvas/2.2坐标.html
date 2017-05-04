@@ -17,6 +17,8 @@
     var cas = document.getElementById('cas'),
         ctx = cas.getContext('2d');
 
+    var data=[[15,20],[18,40],[25,36],[33,16],[39,50],[45,12]];//点数据
+
     var padding = 30,
         arrowHeight = 20,//箭头长
         arrowWidth = 10,//箭头宽
@@ -51,6 +53,23 @@
     ctx.closePath();
 
     ctx.fill();
+    //绘制点
+
+    ctx.beginPath();
+    ctx.fillStyle = 'red';
+    for(var i = 0 ; i<data.length ; i++){
+        var tempX = data[i][0],
+            tempY = data[i][1];
+        tempX =tempX+ x0;
+        tempY = y0-padding -tempY;
+        ctx.moveTo(tempX-4,tempY -4);
+        ctx.lineTo(tempX+4,tempY -4);
+        ctx.lineTo(tempX+4,tempY +4);
+        ctx.lineTo(tempX-4,tempY +4);
+        ctx.closePath();
+        ctx.fill();
+
+    }
 
 </script>
 </html>
