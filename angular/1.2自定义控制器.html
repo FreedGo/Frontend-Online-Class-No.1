@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="win">
+    <div ng-controller="con1">
+        {{add1}}
+        {{add2}}
+        <input type="button">
+
+    </div>
+</body>
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+    var win = angular.module('win',[]);
+    win.controller('con1',function ($scope) {
+        $scope.add1 = '10';
+        $scope.add2 = '20';
+    })
+</script>
+</html>

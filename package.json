@@ -1,0 +1,30 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "前端在线班练习文件",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FreedGo/Frontend-Online-Class-No.1.git"
+  },
+  "author": "freed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FreedGo/Frontend-Online-Class-No.1/issues"
+  },
+  "homepage": "https://github.com/FreedGo/Frontend-Online-Class-No.1#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.1.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
