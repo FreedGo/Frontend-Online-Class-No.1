@@ -51,8 +51,6 @@
             $scope.message = use.save();
         }
     });
-    
-    
     function user(name,pwd,repwd,type) {
         this.username = name;
         this.pwd = pwd;
@@ -69,7 +67,6 @@
         if (this.repwd != this.pwd){
             return '两次密码不一致';
         }
-
         var str = localStorage.getItem('users')||'[]';
         var obj = JSON.parse(str);
 
@@ -79,7 +76,6 @@
                 return '用户名重复'
             }
         }
-
         obj.push({name:this.username,pwd:this.pwd,type:this.type});
         localStorage.setItem('users',JSON.stringify(obj));
         return '注册成功'
