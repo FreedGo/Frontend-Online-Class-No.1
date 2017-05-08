@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>给不想一起触发的事件加定时器，就会放到事件队列里面，后面才会触发</title>
+	<style>
+		.stus-content{
+			position: relative;
+		}
+		.all-stu-lists{
+			position: absolute;
+			width:400px;
+			max-height:100px;
+			top: 36px;
+			left:140px;
+			border:#ccc solid 1px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			z-index: 1000;
+			background-color: #fff;
+			/*display: none;*/
+		}
+		.stu-list-item{
+			font:14px/25px 'Microsoft Yahei';
+			cursor: pointer;
+		}
+		.stu-list-item:hover{
+			background-color: #ddd;
+		}
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			var stus= ['李然','王晨','信心','毛毛','里尔','巴伐利亚'];
+			// 1.5 上课学生增加搜索及下拉菜单。。。
+			var globalStus = stus;//全局使用学生数据
+			var stuInput = $('.all-stus');//接收学生的input
+			/**
+			 * 创建待选学生列表
+			 * @param stuArray
+			 */
+			function creatStuList(stuArray) {
+				var stuLists = '' ;
+				for (var i in stuArray){
+					stuLists += '<li class="stu-list-item">'+stuArray[i] +'</li>';
+				}
+				$('.all-stu-lists').html(stuLists);
+			}
+
+			// 1.5.1页面加载创建全部学生列表
+			creatStuList(stus);
+			// 1.5.2输入框获取焦点之后，学生待选列表出现
+			stuInput.click(function () {
+				$('.all-stu-lists').slideDown(200);
+			});
+			stuInput.blur(function () {
+				//todo 重点在这里,给不想一起触发的事件加定时器，就会放到事件队列里面，后面才会触发
+				setTimeout(function () {
+					$('.all-stu-lists').slideUp(200)
+				},100)
+			});
+			// 1.5.3学生待选列表动态绑定点击事件
+			$('.all-stu-lists').on('click','li',function (event) {
+				event.stopPropagation();
+				stuInput[0].focus();
+				stuInput.val($(this).html());
+				$('.all-stu-lists').slideUp(200);
+
+			});
+			// 1.5.4输入框键盘输入字之后就进行匹配，学生待选列表出现
+			stuInput.keyup(function () {
+				var regStu = new RegExp($(this).val());
+				var newStus = [];
+				for (var j in stus){
+					if (regStu.test(stus[j])){
+						newStus.push(stus[j]);
+					}
+				};
+				if (newStus.length>0){
+					creatStuList(newStus);
+					globalStus = newStus;
+				}else{
+					globalStus = stus;
+
+				}
+			})
+		})
+
+	</script>
+</head>
+<body>
+<input type="text" class="all-stus" required max-length="24" name="stuname" placeholder="请输入学生姓名" >
+<ul class="all-stu-lists">
+</ul>
+</body>
+</html>

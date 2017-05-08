@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="content"></div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="./template-native.js"></script>
+<script type="text/html" id="zxy">
+	<%for (var i = 0; i < list.length; i++) {%>
+	<li>123</li>
+	<%}%>
+</script>
+<script type="text/javascript">
+	$(function () {
+		//获取数据
+		var getData = function (callback) {
+			$.ajax({
+				url:'data.json',
+				type:'get',
+				dataType:'json',
+				success:function (data) {
+					callback && callback(data);
+				}
+			})
+		};
+		//渲染
+		getData(function(data) {
+			var html = template('zxy',data);
+			console.log(html);
+		});
+	})
+</script>
+</body>
+</html>

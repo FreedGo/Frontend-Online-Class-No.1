@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<div id="content"></div>
+</head>
+<body>
+<script type="text/javascript">
+	var xhr = new XMLHttpRequest();
+	xhr.open('get','./data.php');
+	console.log(123);
+	xhr.send(null);
+	xhr.onreadyStateChange = function () {
+		console.log(xhr.readyState);
+		if(xhr.readyState == 4) {
+			if(xhr.status == 200) {
+				console.log(456);
+			}
+		}
+	};
+</script>
+
+
+</body>
+</html>
