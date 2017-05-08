@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * jsonp回调函数
+         * @param data
+         */
+        function foo(data){
+            for(var key in data){
+                console.log(key + ':' +data[key]);
+            }
+        }
+        var script = document.createElement('script'),
+            data = 'name=' + 'zhangsan' + '&pw=' + '123',
+            container = document.getElementsByTagName('head')[0];
+        script.src = 'http://www.greattone.net/test/jsonp.php?'+data;
+        container.appendChild(script);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

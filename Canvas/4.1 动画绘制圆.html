@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cas" width="800" height="600"></canvas>
+</body>
+<script>
+    var cas = document.getElementById('cas'),
+        ctx = cas.getContext('2d');
+
+    var x0 = cas.width/2,
+        y0 = cas.height/2,
+        r = 200,
+        timer = null,
+        a = -90;
+
+    ctx.fillStyle = 'blue';
+    timer=setInterval(function () {
+        ctx.moveTo(x0,y0);
+        a++;
+        if (a>= 270){
+            clearInterval(timer);
+        }
+        ctx.arc(x0,y0,r,toRadian(-90),toRadian(a));
+        ctx.fill();
+    },30);
+
+    function toRadian(data) {
+        return data*Math.PI/180;
+    }
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #cas{
+            border:#333 solid 1px;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cas" width="600" height="400"></canvas>
+
+</body>
+<script>
+    var cas = document.querySelector('#cas'),
+        ctx = cas.getContext('2d');
+    var height = 30,
+        rows = cas.height/height,
+        cols = cas.width/height;
+    for(var i = 0 ; i<=rows; i++){
+        for(j=0;j<cols;j++){
+            ctx.moveTo(j*height,(i+1)*height);
+            ctx.lineTo((j+1)*height,(i+1)*height);
+            ctx.lineTo((j+1)*30,(i-1)*30);
+        }
+    }
+    ctx.stroke();
+</script>
+</html>
