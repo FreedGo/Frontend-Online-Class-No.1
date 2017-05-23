@@ -76,16 +76,17 @@
         if (this.pwd != this.repwd){
             return '两次密码不一致'
         }
-        //todo localStorage报错
-        var str = localStorge.getItem('users')||'[]';
+
+        var str = localStorage.getItem('users')||'[]';
         var obj = JSON.parse(str);
+
         for (var i = 0 ; i<obj.length ; i++){
             if (this.username == obj[i].username){
                 return '用户名重复,请重输'
             }
         }
         obj.push(this);
-        localStorge.setItem('users',JSON.stringify(obj));
+	    localStorage.setItem('users',JSON.stringify(obj));
         return '注册成功'
 
     }

@@ -5,5 +5,10 @@ module.exports = {
     entry:'./main.js',
     output:{
         filename:'./bulid.js'
+    },
+    module:{
+        test:'',
+        loader:''
+
     }
 };

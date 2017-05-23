@@ -21,8 +21,10 @@
   "homepage": "https://github.com/FreedGo/Frontend-Online-Class-No.1#readme",
   "dependencies": {
     "angular": "^1.6.4",
+    "css-loader": "^0.28.1",
     "gulp": "^3.9.1",
-    "gulp-uglify": "^2.1.2"
+    "gulp-uglify": "^2.1.2",
+    "style-loader": "^0.17.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
