@@ -4,11 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <canvas></canvas>
     <script>
-	    console.log(Object.constructor == Function);
-	    console.log(Object.constructor == Array.constructor);
-	    console.log(Object.constructor == Function.constructor);
-	    console.log(Object.constructor == Object);
+	    var a = 20;
+	    (function () {
+		    if (false) {
+			    var a = 10;
+		    }
+		    (function () {
+			    console.log(a)
+		    }());
+		    console.log(a)
+	    }())
     </script>
 </head>
 <body>
