@@ -3,23 +3,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <canvas></canvas>
-    <script>
-	    var a = 20;
-	    (function () {
-		    if (false) {
-			    var a = 10;
-		    }
-		    (function () {
-			    console.log(a)
-		    }());
-		    console.log(a)
-	    }())
-    </script>
+    <title>Title</title>.
+    <style>
+        .fh{
+            background-color: pink;
+            position: relative;
+        }
+        .son{
+            height: 300px;
+            width: 300px;
+            background-color: yellowgreen;
+            transform: translate3d(100px,0,0);
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
-
+    <div class="fh">
+        <div class="son"></div>
+    </div>
 </body>
 </html>
 
